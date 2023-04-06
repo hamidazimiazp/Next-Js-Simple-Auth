@@ -1,4 +1,5 @@
 import User from "@/models/User";
+import { hashPasssword } from "@/utils/auth";
 import connectDB from "@/utils/connectDB";
 
 export default async function handler(req, res) {
@@ -16,15 +17,17 @@ export default async function handler(req, res) {
 
   const { email, password, confirmPassword } = req.body;
 
-  if (!email || !password || confirmPassword || password !== confirmPassword) {
+  if (!email || !password || !confirmPassword || password !== confirmPassword) {
     return res
       .status(400)
       .json({ status: "Failed!", message: "Invalid Data !" });
   }
 
+  const hashPassword = await hashPasssword(password);
+
   const user = await User.create({
     email: email,
-    password: password,
+    password: hashPassword,
     fullName: "",
     bio: "",
   });

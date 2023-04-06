@@ -1,0 +1,22 @@
+.wrapper {
+  height: 100vh;
+}
+.header,
+.footer {
+  height: 46px;
+  background-color: #fff;
+}
+.header {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.footer {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px -2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px -1px 3px -1px;
+}
+.main {
+  padding: 5px;
+  height: calc(100% - 46px - 46px);
+  overflow: hidden;
+  overflow-y: scroll;
+}

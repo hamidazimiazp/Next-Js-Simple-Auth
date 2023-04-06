@@ -1,5 +1,6 @@
 import Button from "@/components/elements/Button/Button";
-import React from "react";
+import { loggedIn } from "@/utils/auth";
+import React, { useEffect, useState } from "react";
 
 const styles = {
   width: "100%",
@@ -15,6 +16,18 @@ const styles = {
 };
 
 const HomePage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    loggedIn().then((data) => {
+      if (data) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
   return (
     <div style={styles}>
       <h1>Nextjs Simple JWT</h1>
@@ -22,7 +35,11 @@ const HomePage = () => {
       <br />
       <br />
       <br />
-      <Button text="Login" width={100} href="/login" />
+      {isLoggedIn ? (
+        <Button text="Dashboard" width={100} href="/dashboard" />
+      ) : (
+        <Button text="Login" width={100} href="/login" />
+      )}
     </div>
   );
 };

@@ -22,4 +22,15 @@ const verifyToken = (token, secretKey) => {
   }
 };
 
-export { hashPasssword, verifyPassword, verifyToken };
+const loggedIn = async () => {
+  const res = await fetch("/api/user");
+  const data = await res.json();
+
+  if (data.status === "success") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export { hashPasssword, verifyPassword, verifyToken, loggedIn };

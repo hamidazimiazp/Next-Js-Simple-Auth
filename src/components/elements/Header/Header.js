@@ -12,8 +12,6 @@ const Header = () => {
           width={100}
           height={40}
           fontSize={16}
-          bgColor="greenyellow"
-          color="#000"
           href="/signup"
         />
         <Button
@@ -21,8 +19,6 @@ const Header = () => {
           width={100}
           height={40}
           fontSize={16}
-          bgColor="cyan"
-          color="#000"
           href="/login"
         />
       </div>

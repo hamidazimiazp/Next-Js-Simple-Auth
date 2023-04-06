@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/react,nextjs,git,database,visualstudiocode,vim
 # Edit at https://www.toptal.com/developers/gitignore?templates=react,nextjs,git,database,visualstudiocode,vim
 
+# ignore .env file
+.env
+
 ### Database ###
 *.accdb
 *.db

@@ -3,8 +3,11 @@ import styles from "./Header.module.css";
 import Link from "next/link";
 import Button from "../Button/Button";
 import { loggedIn } from "@/utils/auth";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -17,6 +20,14 @@ const Header = () => {
     });
   }, []);
 
+  const logoutHandler = async () => {
+    const res = await fetch("/api/auth/signout");
+    const data = await res.json();
+    if (data.status === "success") {
+      router.replace("/login");
+    }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.left}>
@@ -28,7 +39,7 @@ const Header = () => {
               height={40}
               fontSize={16}
               color="red"
-              href="/logout"
+              clicked={logoutHandler}
             />
             <Button
               text="Dashboard"

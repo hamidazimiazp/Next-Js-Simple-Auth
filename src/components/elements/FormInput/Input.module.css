@@ -1,0 +1,25 @@
+.formInput {
+  width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.formInput label {
+  font-size: 14px;
+  color: #000;
+}
+.formInput input {
+  all: unset;
+  width: 100%;
+  height: 46px;
+  border: 1px solid #1e1e1e;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  text-indent: 5px;
+}

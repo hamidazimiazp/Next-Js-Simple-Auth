@@ -10,17 +10,13 @@ export default async function handler(req, res) {
     await connectDB();
   } catch (error) {
     console.log(error.message);
-    return res
-      .status(500)
-      .json({ status: "Failed!", message: "Server Error !" });
+    return res.status(500).json({ status: "failed", message: "Server Error!" });
   }
 
   const { email, password, confirmPassword } = req.body;
 
   if (!email || !password || !confirmPassword || password !== confirmPassword) {
-    return res
-      .status(400)
-      .json({ status: "Failed!", message: "Invalid Data !" });
+    return res.status(400).json({ status: "failed", message: "Invalid Data!" });
   }
 
   const hashPassword = await hashPasssword(password);
@@ -32,5 +28,5 @@ export default async function handler(req, res) {
     bio: "",
   });
 
-  res.status(201).json({ status: "Success!", message: "Created", data: user });
+  res.status(201).json({ status: "success", message: "Created!", data: user });
 }

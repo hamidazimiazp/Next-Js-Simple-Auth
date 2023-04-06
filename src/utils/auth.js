@@ -11,7 +11,7 @@ const verifyPassword = async (password, hashPass) => {
   return isValid;
 };
 
-const verifyToken = async (token, secretKey) => {
+const verifyToken = (token, secretKey) => {
   try {
     const result = verify(token, secretKey);
     return {

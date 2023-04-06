@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/auth.module.css";
 import Input from "@/components/elements/FormInput/Input";
 import Button from "@/components/elements/Button/Button";
@@ -6,6 +6,16 @@ import { useRouter } from "next/router";
 
 const SignIn = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    fetch("/api/user")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          router.replace("/dashboard");
+        }
+      });
+  }, []);
 
   const [formData, setFormData] = useState({
     email: "",

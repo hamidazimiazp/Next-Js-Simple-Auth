@@ -4,7 +4,7 @@ import { verifyToken } from "@/utils/auth";
 export default async function handler(req, res) {
   if (req.method !== "GET") return;
 
-  const { token } = req.cookie;
+  const { token } = req.cookies;
   const secretKey = process.env.SECRET_KEY;
 
   if (!token) {
@@ -26,6 +26,7 @@ export default async function handler(req, res) {
     res.status(401).json({
       status: "failed",
       message: "your unauthorized !",
+      data: result,
     });
   }
 }

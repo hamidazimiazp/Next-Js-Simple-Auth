@@ -19,6 +19,14 @@ export default async function handler(req, res) {
     return res.status(400).json({ status: "failed", message: "Invalid Data!" });
   }
 
+  const userExists = await User.findOne({ email: email });
+
+  if (userExists) {
+    return res
+      .status(422)
+      .json({ status: "failed", message: "this email already exists!" });
+  }
+
   const hashPassword = await hashPasssword(password);
 
   const user = await User.create({

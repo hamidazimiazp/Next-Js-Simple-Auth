@@ -1,7 +1,8 @@
+import HomePage from "@/components/templates/HomePage/HomePage";
 import React from "react";
 
 const Index = () => {
-  return <div>Hello World -_-</div>;
+  return <HomePage />;
 };
 
 export default Index;

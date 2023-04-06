@@ -2,7 +2,16 @@ import Link from "next/link";
 import React from "react";
 import styles from "./Button.module.css";
 
-const Button = ({ text, clicked, color, bgColor, href }) => {
+const Button = ({
+  text,
+  clicked,
+  color,
+  bgColor,
+  href,
+  width,
+  height,
+  fontSize,
+}) => {
   if (href) {
     return (
       <Link
@@ -11,6 +20,9 @@ const Button = ({ text, clicked, color, bgColor, href }) => {
         style={{
           color: color,
           backgroundColor: bgColor,
+          width,
+          height,
+          fontSize,
         }}
       >
         {text}
@@ -24,6 +36,9 @@ const Button = ({ text, clicked, color, bgColor, href }) => {
         style={{
           color: color,
           backgroundColor: bgColor,
+          width,
+          height,
+          fontSize,
         }}
       >
         {text}

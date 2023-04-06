@@ -1,3 +1,4 @@
+import Button from "@/components/elements/Button/Button";
 import React from "react";
 
 const styles = {
@@ -18,6 +19,10 @@ const HomePage = () => {
     <div style={styles}>
       <h1>Nextjs Simple JWT</h1>
       <p style={{ fontSize: 18 }}> Authentication & Authorization</p>
+      <br />
+      <br />
+      <br />
+      <Button text="Login" width={100} href="/login" />
     </div>
   );
 };

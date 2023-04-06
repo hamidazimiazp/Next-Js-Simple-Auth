@@ -3,6 +3,7 @@ import styles from "@/styles/auth.module.css";
 import Input from "@/components/elements/FormInput/Input";
 import Button from "@/components/elements/Button/Button";
 import { useRouter } from "next/router";
+import { verifyToken } from "@/utils/auth";
 
 const SignUp = () => {
   const router = useRouter();
@@ -70,3 +71,21 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+export async function getServerSideProps(context) {
+  const { token } = context.req.cookies;
+  const secretKey = process.env.SECRET_KEY;
+  const result = verifyToken(token, secretKey);
+
+  if (result) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}

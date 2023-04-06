@@ -10,10 +10,7 @@ const userSchema = new Schema({
     required: true,
   },
   fullName: String,
-  bio: {
-    type: String,
-    minLength: 6,
-  },
+  bio: String,
 });
 
 const User = models.User || model("User", userSchema);
